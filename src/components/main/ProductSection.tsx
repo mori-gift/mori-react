@@ -1,5 +1,6 @@
 import React from 'react';
-import { Section } from '../../types';
+import {Section} from '../../types';
+import {useNavigate} from 'react-router-dom';
 import ProductCard from './ProductCard';
 
 interface ProductSectionProps {
@@ -7,6 +8,15 @@ interface ProductSectionProps {
 }
 
 const ProductSection = ({ section }: ProductSectionProps) => {
+
+    const navigate = useNavigate();
+
+    const handleMoreClick = () => {
+        // section.id를 URL 친화적으로 변환
+        const categoryId = section.id.toLowerCase().replace(/\s+/g, '-');
+        navigate(`/category/${categoryId}`);
+    };
+
     return (
         <section className="mb-16">
             {/* ep 원형 테두리 */}
@@ -30,7 +40,10 @@ const ProductSection = ({ section }: ProductSectionProps) => {
 
             {/* 더보기 버튼 */}
             <div className="text-center">
-                <button className="px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+                <button
+                    onClick={handleMoreClick}
+                    className="px-8 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors"
+                >
                     더보기
                 </button>
             </div>
