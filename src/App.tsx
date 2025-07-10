@@ -1,59 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react';
+import axios from 'axios';
+
+// 타입 정의
+interface Product {
+    id: number;
+    name: string;
+    price: string;
+    image: string;
+}
+
+interface Section {
+    id: string;
+    title: string;
+    products: Product[];
+}
 
 function App() {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [sliderImages, setSliderImages] = useState<string[]>([]);
+    const [sections, setSections] = useState<Section[]>([]);
+    const [loading, setLoading] = useState(true);
 
-    // 슬라이더 이미지 데이터
-    const sliderImages = [
-        'https://picsum.photos/800/400?random=1',
-        'https://picsum.photos/800/400?random=2',
-        'https://picsum.photos/800/400?random=3'
-    ];
+    // API 데이터 가져오기
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
 
-    // 각 섹션별 데이터 (ep1~ep4)
-    const sections = [
-        {
-            id: 'ep1',
-            title: '신상품',
-            products: [
-                { id: 1, name: '장미 부케', price: '35,000원', image: 'https://picsum.photos/200/200?random=11' },
-                { id: 2, name: '튤립 화분', price: '25,000원', image: 'https://picsum.photos/200/200?random=12' },
-                { id: 3, name: '해바라기 세트', price: '18,000원', image: 'https://picsum.photos/200/200?random=13' },
-                { id: 4, name: '카네이션', price: '12,000원', image: 'https://picsum.photos/200/200?random=14' }
-            ]
-        },
-        {
-            id: 'ep2',
-            title: '베스트셀러',
-            products: [
-                { id: 5, name: '프리미엄 장미', price: '45,000원', image: 'https://picsum.photos/200/200?random=21' },
-                { id: 6, name: '사랑의 부케', price: '38,000원', image: 'https://picsum.photos/200/200?random=22' },
-                { id: 7, name: '계절 믹스', price: '28,000원', image: 'https://picsum.photos/200/200?random=23' },
-                { id: 8, name: '미니 화분', price: '15,000원', image: 'https://picsum.photos/200/200?random=24' }
-            ]
-        },
-        {
-            id: 'ep3',
-            title: '추천상품',
-            products: [
-                { id: 9, name: '웨딩 부케', price: '65,000원', image: 'https://picsum.photos/200/200?random=31' },
-                { id: 10, name: '생일 선물', price: '32,000원', image: 'https://picsum.photos/200/200?random=32' },
-                { id: 11, name: '감사 인사', price: '22,000원', image: 'https://picsum.photos/200/200?random=33' },
-                { id: 12, name: '축하화환', price: '55,000원', image: 'https://picsum.photos/200/200?random=34' }
-            ]
-        },
-        {
-            id: 'ep4',
-            title: '할인상품',
-            products: [
-                { id: 13, name: '특가 장미', price: '19,000원', image: 'https://picsum.photos/200/200?random=41' },
-                { id: 14, name: '세일 부케', price: '24,000원', image: 'https://picsum.photos/200/200?random=42' },
-                { id: 15, name: '마감 세일', price: '16,000원', image: 'https://picsum.photos/200/200?random=43' },
-                { id: 16, name: '클리어런스', price: '11,000원', image: 'https://picsum.photos/200/200?random=44' }
-            ]
-        }
-    ];
+                // 슬라이더 이미지 가져오기
+                const sliderResponse = await axios.get('/api/sliders');
+                setSliderImages(sliderResponse.data);
+
+                // 에피소드 데이터 가져오기
+                const episodesResponse = await axios.get('/api/episodes');
+                setSections(episodesResponse.data);
+
+            } catch (error) {
+                console.error('API 데이터 가져오기 실패:', error);
+                // 에러 시 기본 데이터 설정
+                setSliderImages([
+                    'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop',
+                    'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=800&h=400&fit=crop',
+                    'https://images.unsplash.com/photo-1578662015879-d7c8b997c9f9?w=800&h=400&fit=crop'
+                ]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
 
     const nextSlide = () => {
         setCurrentSlide((prev) => (prev + 1) % sliderImages.length);
@@ -63,13 +60,25 @@ function App() {
         setCurrentSlide((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
     };
 
+    // 로딩 상태
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-white flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
+                    <p className="mt-4 text-gray-600">데이터를 불러오는 중...</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="min-h-screen bg-white">
             {/* 1단계: 헤더 */}
             <header className="bg-white shadow-sm sticky top-0 z-50">
                 <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-6xl">
                     <div className="text-2xl font-bold text-green-600">
-                       Mori
+                        FlowerShop
                     </div>
                     <button className="p-2 hover:bg-gray-100 rounded-full">
                         <MoreHorizontal size={24} />

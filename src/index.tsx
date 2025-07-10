@@ -2,18 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+async function enableMocking() {
+    if (process.env.NODE_ENV !== 'development') {
+        return;
+    }
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    const { worker } = await import('./mocks/browser');
+
+    // MSW 완전히 시작될 때까지 기다리기
+    return worker.start({
+        onUnhandledRequest: 'bypass',
+    });
+}
+
+// MSW 시작 후 React 앱 렌더링
+enableMocking().then(() => {
+    const root = ReactDOM.createRoot(
+        document.getElementById('root') as HTMLElement
+    );
+    root.render(<App />);
+});
