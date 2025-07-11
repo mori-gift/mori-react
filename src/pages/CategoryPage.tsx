@@ -1,27 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../components/common/Header';
+import StoreCard from '../components/episode/StoreCard';
+import LoadingSpinner from '../components/common/LoadingSpinner';
 import {CategoryData} from "../types";
-
-// CSS를 별도로 정의
-const scrollbarHideStyles = `
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-`;
 
 const CategoryPage = () => {
     const { categoryId } = useParams<{ categoryId: string }>();
     const navigate = useNavigate();
     const [categoryData, setCategoryData] = useState<CategoryData | null>(null);
     const [loading, setLoading] = useState(true);
-    const [loadedStores, setLoadedStores] = useState(3); // 초기 3개 가게 로드
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const [loadedStores, setLoadedStores] = useState(3);
 
     useEffect(() => {
         const fetchCategoryData = async () => {
@@ -41,7 +31,7 @@ const CategoryPage = () => {
         }
     }, [categoryId]);
 
-    // 무한 스크롤 처리 (가게 단위)
+    // 무한 스크롤 처리
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 500) {
@@ -56,14 +46,7 @@ const CategoryPage = () => {
     }, [categoryData, loadedStores]);
 
     if (loading) {
-        return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
-                    <p className="mt-4 text-gray-600">데이터를 불러오는 중...</p>
-                </div>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     if (!categoryData) {
@@ -84,9 +67,6 @@ const CategoryPage = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            {/* CSS 스타일 추가 */}
-            <style dangerouslySetInnerHTML={{ __html: scrollbarHideStyles }} />
-
             <Header />
 
             <main className="container mx-auto px-4 py-8 max-w-6xl">
@@ -102,41 +82,10 @@ const CategoryPage = () => {
                     </div>
                 </div>
 
-                {/* 가게별 섹션들 - 무한 스크롤 */}
+                {/* 가게별 섹션들 */}
                 <div className="space-y-6">
                     {categoryData.stores.slice(0, loadedStores).map((store, storeIndex) => (
-                        <div key={storeIndex} className="bg-gray-50 rounded-2xl p-6">
-                            <div className="flex items-center justify-between mb-4">
-                                <div>
-                                    <h2 className="text-lg md:text-xl font-bold text-gray-800">{store.name}</h2>
-                                    <p className="text-sm text-gray-600">{store.address} · {store.category}</p>
-                                </div>
-                                <p>→</p>
-                            </div>
-
-                            {/* 가게별 이미지 슬라이더 */}
-                            <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-4">
-                                {store.images.map((image, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex-shrink-0 w-32 h-32 md:w-40 md:h-40 relative"
-                                    >
-                                        <div className={`w-full h-full bg-white shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
-                                            index === 0
-                                                ? 'rounded-tl-2xl rounded-bl-2xl' // 첫 번째만 왼쪽 둥글게
-                                                : '' // 나머지는 완전 사각형
-                                        }`}>
-                                            <img
-                                                src={image}
-                                                alt={`${store.name} 케이크 ${index + 1}`}
-                                                className="w-full h-full object-cover"
-                                                loading="lazy"
-                                            />
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <StoreCard key={storeIndex} store={store} storeIndex={storeIndex} />
                     ))}
                 </div>
 

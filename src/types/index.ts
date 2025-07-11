@@ -25,3 +25,13 @@ export interface CategoryData {
         images: string[];
     }>;
 }
+
+export interface StoreCardProps {
+    store: {
+        name: string;
+        address: string;
+        category: string;
+        images: string[];
+    };
+    storeIndex: number;
+}
