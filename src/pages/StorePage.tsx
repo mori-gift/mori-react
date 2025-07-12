@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { MapPin, Phone } from 'lucide-react';
 import axios from 'axios';
 import StoreHeader from '../components/store/StoreHeader';
@@ -8,6 +8,7 @@ import { StoreData } from '../types';
 
 const StorePage = () => {
     const { storeId } = useParams<{ storeId: string }>();
+    const navigate = useNavigate(); // navigate 추가
     const [storeData, setStoreData] = useState<StoreData | null>(null);
     const [loading, setLoading] = useState(true);
     const [showFullDescription, setShowFullDescription] = useState(false);
@@ -38,7 +39,6 @@ const StorePage = () => {
         const handleScroll = () => {
             if (timeoutId) clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
-                // 스크롤이 0보다 작아지지 않도록 제한
                 const currentScrollY = Math.max(window.scrollY, 0);
                 setScrollY(currentScrollY);
             }, 16);
@@ -51,6 +51,11 @@ const StorePage = () => {
             if (timeoutId) clearTimeout(timeoutId);
         };
     }, []);
+
+    // 갤러리 열기 함수
+    const openGallery = (imageIndex: number) => {
+        navigate(`/store/${storeId}/gallery/${imageIndex}`);
+    };
 
     if (loading) {
         return <LoadingSpinner />;
@@ -85,12 +90,11 @@ const StorePage = () => {
         <div
             className="bg-gray-900"
             style={{
-                overscrollBehavior: 'none', // 오버스크롤 방지
+                overscrollBehavior: 'none',
                 height: '100vh',
                 overflow: 'hidden'
             }}
         >
-            {/* 스크롤 가능한 컨테이너 */}
             <div
                 style={{
                     height: '100vh',
@@ -140,7 +144,7 @@ const StorePage = () => {
                         borderTopRightRadius: '24px',
                         minHeight: 'calc(100vh - 280px)',
                         position: 'relative',
-                        willChange: 'transform' // 성능 최적화
+                        willChange: 'transform'
                     }}
                 >
                     <div className="px-6 pt-6 pb-6">
@@ -192,7 +196,11 @@ const StorePage = () => {
                             <h2 className="text-lg font-semibold mb-4">전체 사진</h2>
                             <div className="grid grid-cols-2 gap-3">
                                 {storeData.images.map((image, index) => (
-                                    <div key={index} className="aspect-square overflow-hidden rounded-lg">
+                                    <div
+                                        key={index}
+                                        className="aspect-square overflow-hidden rounded-lg cursor-pointer"
+                                        onClick={() => openGallery(index)} // 클릭 이벤트 추가
+                                    >
                                         <img
                                             src={image}
                                             alt={`${storeData.displayName} 사진 ${index + 1}`}
