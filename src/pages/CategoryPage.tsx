@@ -85,7 +85,7 @@ const CategoryPage = () => {
                 {/* 가게별 섹션들 */}
                 <div className="space-y-6">
                     {categoryData.stores.slice(0, loadedStores).map((store, storeIndex) => (
-                        <StoreCard key={storeIndex} store={store} storeIndex={storeIndex} />
+                        <StoreCard key={store.id} store={store} storeIndex={storeIndex} />
                     ))}
                 </div>
 

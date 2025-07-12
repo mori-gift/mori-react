@@ -1,7 +1,16 @@
 import React from 'react';
-import {StoreCardProps} from "../../types";
+import { useNavigate } from 'react-router-dom';
+import { ChevronRight } from 'lucide-react';
+import {StoreCardProps} from '../../types';
+
 
 const StoreCard = ({ store, storeIndex }: StoreCardProps) => {
+    const navigate = useNavigate();
+
+    const handleStoreClick = () => {
+        navigate(`/store/${store.id}`);
+    };
+
     return (
         <div key={storeIndex} className="bg-gray-50 rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
@@ -9,7 +18,12 @@ const StoreCard = ({ store, storeIndex }: StoreCardProps) => {
                     <h2 className="text-lg md:text-xl font-bold text-gray-800">{store.name}</h2>
                     <p className="text-sm text-gray-600">{store.address} · {store.category}</p>
                 </div>
-                <p>→</p>
+                <button
+                    onClick={handleStoreClick}
+                    className="p-2 hover:bg-gray-200 rounded-full transition-colors"
+                >
+                    <ChevronRight size={24} className="text-gray-600" />
+                </button>
             </div>
 
             {/* 가게별 이미지 슬라이더 */}

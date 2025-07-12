@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Section } from '../types/index';
+import { Section } from '../types';
 import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import ImageSlider from '../components/main/ImageSlider';
