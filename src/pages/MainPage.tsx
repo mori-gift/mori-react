@@ -10,6 +10,7 @@ const MainPage = () => {
     const [sliderImages, setSliderImages] = useState<string[]>([]);
     const [sections, setSections] = useState<Section[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentSlide, setCurrentSlide] = useState(0);
 
     // API 데이터 가져오기
     useEffect(() => {
@@ -41,6 +42,11 @@ const MainPage = () => {
         fetchData();
     }, []);
 
+    // 슬라이드 변경 핸들러
+    const handleSlideChange = (index: number) => {
+        setCurrentSlide(index);
+    };
+
     // 로딩 상태
     if (loading) {
         return (
@@ -56,10 +62,10 @@ const MainPage = () => {
     return (
         <div className="min-h-screen bg-white">
             {/* 메인 전용 헤더 */}
-            <MainHeader sliderImages={sliderImages} />
+            <MainHeader sliderImages={sliderImages} currentSlide={currentSlide} />
 
             {/* 이미지 슬라이더 */}
-            <ImageSlider images={sliderImages} />
+            <ImageSlider images={sliderImages} onSlideChange={handleSlideChange} />
 
             {/* 에피소드 섹션들 */}
             {sections.map((section, index) => (

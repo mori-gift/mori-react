@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MoreHorizontal } from 'lucide-react';
 
 interface MainHeaderProps {
     sliderImages: string[];
+    currentSlide: number;
 }
 
-const MainHeader = ({ sliderImages }: MainHeaderProps) => {
+const MainHeader = ({ sliderImages, currentSlide }: MainHeaderProps) => {
     const navigate = useNavigate();
     const [scrollY, setScrollY] = useState(0);
-    const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
@@ -33,25 +32,19 @@ const MainHeader = ({ sliderImages }: MainHeaderProps) => {
                     mori
                 </div>
 
-                {/* 슬라이더 영역일 때만 인디케이터 표시 */}
-                {isInSlider && (
-                    <div className="flex space-x-2">
-                        {sliderImages.map((_, index) => (
-                            <div
-                                key={index}
-                                className={`w-2 h-2 rounded-full ${
-                                    index === currentSlide ? 'bg-white' : 'bg-white/50'
-                                }`}
-                            />
-                        ))}
-                    </div>
-                )}
-
-                <button className={`p-2 rounded-full transition-colors ${
-                    isInSlider ? 'text-white hover:bg-white/20' : 'text-black hover:bg-gray-100'
-                }`}>
-                    <MoreHorizontal size={24} />
-                </button>
+                {/* 항상 인디케이터 표시 (슬라이더일 때는 흰색, 아닐 때는 검은색) */}
+                <div className="flex space-x-2">
+                    {sliderImages.map((_, index) => (
+                        <div
+                            key={index}
+                            className={`w-2 h-2 rounded-full transition-colors ${
+                                isInSlider
+                                    ? (index === currentSlide ? 'bg-white' : 'bg-white/50')
+                                    : (index === currentSlide ? 'bg-black' : 'bg-black/50')
+                            }`}
+                        />
+                    ))}
+                </div>
             </div>
         </header>
     );
