@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../components/common/Header';
-import StoreCard from '../components/episode/StoreCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import {EpisodeData} from "../types/episodeType";
+import EpisodeHeader from '../components/episode/EpisodeHeader';
+import StoreList from '../components/episode/StoreList';
+import EmptyStores from '../components/episode/EmptyStores';
+import ErrorState from '../components/episode/ErrorState';
+import LoadingIndicator from '../components/episode/LoadingIndicator';
+import { EpisodeData } from "../types/episodeType";
 
 const EpisodePage = () => {
     const { episodeId } = useParams<{ episodeId: string }>();
@@ -45,24 +49,16 @@ const EpisodePage = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [episodeData, loadedStores]);
 
+    const handleNavigateHome = () => navigate('/');
+
+    // 로딩 상태
     if (loading) {
         return <LoadingSpinner />;
     }
 
+    // 에피소드 데이터가 없는 경우
     if (!episodeData) {
-        return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
-                <div className="text-center">
-                    <p className="text-gray-600 mb-4">에피소드르 찾을 수 없습니다.</p>
-                    <button
-                        onClick={() => navigate('/')}
-                        className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-                    >
-                        홈으로 돌아가기
-                    </button>
-                </div>
-            </div>
-        );
+        return <ErrorState onNavigateHome={handleNavigateHome} />;
     }
 
     return (
@@ -70,33 +66,27 @@ const EpisodePage = () => {
             <Header />
 
             <main className="container mx-auto px-4 py-8 max-w-6xl">
-                {/* 상단 섹션 */}
-                <div className="mb-8">
-                    <div className="text-center mb-6">
-                        <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-3">
-                            {episodeData.episodeNumber}. {episodeData.title}
-                        </h1>
-                        <p className="text-sm md:text-base text-gray-600 whitespace-pre-line">
-                            {episodeData.description}
-                        </p>
-                    </div>
-                </div>
+                <EpisodeHeader
+                    episodeNumber={episodeData.episodeNumber}
+                    title={episodeData.title}
+                    description={episodeData.description}
+                />
 
-                {/* 가게별 섹션들 */}
-                <div className="space-y-6">
-                    {episodeData.stores.slice(0, loadedStores).map((store, storeIndex) => (
-                        <StoreCard key={store.id} store={store} storeIndex={storeIndex} />
-                    ))}
-                </div>
+                {/* 상점이 없는 경우 */}
+                {episodeData.stores.length === 0 ? (
+                    <EmptyStores />
+                ) : (
+                    <>
+                        <StoreList
+                            stores={episodeData.stores}
+                            loadedStores={loadedStores}
+                        />
 
-                {/* 로딩 인디케이터 */}
-                {loadedStores < episodeData.stores.length && (
-                    <div className="text-center mt-6">
-                        <div className="inline-flex items-center px-3 py-2 text-sm text-gray-600">
-                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-green-500 mr-2"></div>
-                            더 많은 가게를 불러오는 중...
-                        </div>
-                    </div>
+                        {/* 더 불러올 상점이 있는 경우 로딩 인디케이터 */}
+                        {loadedStores < episodeData.stores.length && (
+                            <LoadingIndicator />
+                        )}
+                    </>
                 )}
             </main>
         </div>

@@ -19,15 +19,22 @@ export interface EpisodeData extends EpisodeBasicInfo {
     stores: EpisodeStore[];
 }
 
-// 페이지네이션된 스토어 응답
-export interface PaginatedStoresResponse {
-    stores: EpisodeStore[];
-    totalCount: number;
-    currentPage: number;
-    hasMore: boolean;
-}
-
 export interface StoreCardProps {
     store: EpisodeStore;
     storeIndex: number;
+}
+
+export interface EpisodeHeaderProps {
+    episodeNumber: string;
+    title: string;
+    description: string;
+}
+
+export interface ErrorStateProps {
+    onNavigateHome: () => void;
+}
+
+export interface StoreListProps {
+    stores: EpisodeStore[];
+    loadedStores: number;
 }
