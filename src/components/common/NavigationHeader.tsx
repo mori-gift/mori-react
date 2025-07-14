@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronLeft, Home, Share } from 'lucide-react';
+import { ChevronLeft, Home, Share2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface NavigationHeaderProps {
@@ -33,11 +33,11 @@ const NavigationHeader = ({
             return;
         }
 
-        // 기본 공유 기능
         if (navigator.share) {
             navigator.share({
                 title: document.title,
                 url: window.location.href,
+            }).catch(() => {
             });
         } else {
             navigator.clipboard.writeText(window.location.href);
@@ -78,7 +78,7 @@ const NavigationHeader = ({
                         onClick={handleShare}
                         className={`p-2 ${hoverBg} rounded-full transition-colors`}
                     >
-                        <Share size={24} className={iconColor} />
+                        <Share2 size={24} className={iconColor} />
                     </button>
                 )}
             </div>
