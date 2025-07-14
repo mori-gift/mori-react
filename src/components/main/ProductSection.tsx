@@ -1,12 +1,7 @@
 import React from 'react';
-import { Section } from '../../types';
-import { useNavigate } from 'react-router-dom';
-import ProductCard from './ProductCard';
-
-interface ProductSectionProps {
-    section: Section;
-    index: number;
-}
+import {useNavigate} from 'react-router-dom';
+import {ProductSectionProps} from '../../types/mainType';
+import ProductCard from "./ProductCard";
 
 const ProductSection = ({ section, index }: ProductSectionProps) => {
     const navigate = useNavigate();

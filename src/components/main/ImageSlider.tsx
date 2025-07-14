@@ -1,9 +1,5 @@
-import React, { useState, useEffect } from 'react';
-
-interface ImageSliderProps {
-    images: string[];
-    onSlideChange: (index: number) => void;
-}
+import React, {useEffect, useState} from 'react';
+import {ImageSliderProps} from "../../types/mainType";
 
 const ImageSlider = ({ images, onSlideChange }: ImageSliderProps) => {
     const [currentSlide, setCurrentSlide] = useState(0);

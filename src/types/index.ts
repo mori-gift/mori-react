@@ -1,17 +1,3 @@
-// types/index.ts
-export interface Product {
-    id: number;
-    name: string;
-    price: string;
-    image: string;
-}
-
-export interface Section {
-    id: string;
-    title: string;
-    products: Product[];
-}
-
 // 카테고리 페이지용 스토어 타입
 export interface CategoryStore {
     id: string;

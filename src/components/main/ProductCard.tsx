@@ -1,9 +1,6 @@
 import React from 'react';
-import { Product } from '../../types';
+import {ProductCardProps} from '../../types/mainType';
 
-interface ProductCardProps {
-    product: Product;
-}
 
 const ProductCard = ({ product }: ProductCardProps) => {
     return (

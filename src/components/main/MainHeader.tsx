@@ -1,10 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-interface MainHeaderProps {
-    sliderImages: string[];
-    currentSlide: number;
-}
+import React, {useEffect, useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {MainHeaderProps} from "../../types/mainType";
 
 const MainHeader = ({ sliderImages, currentSlide }: MainHeaderProps) => {
     const navigate = useNavigate();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Section } from '../types';
+import { Section } from '../types/mainType';
 import MainFooter from '../components/main/MainFooter';
 import ImageSlider from '../components/main/ImageSlider';
 import ProductSection from '../components/main/ProductSection';
