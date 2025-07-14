@@ -1,6 +1,6 @@
 export const mainData = [
     {
-        id: 'ep. 1',
+        id: '1',
         title: '향기로 기억되는 하루',
         products: [
             { id: 1, name: '미소바케카케', price: '35,000원', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop' },
@@ -10,7 +10,7 @@ export const mainData = [
         ]
     },
     {
-        id: 'ep. 2',
+        id: '2',
         title: '너를 담은 케이크 한 조각',
         products: [
             { id: 5, name: '우이펀드', price: '28,000원', image: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=200&fit=crop' },
@@ -20,7 +20,7 @@ export const mainData = [
         ]
     },
     {
-        id: 'ep. 3',
+        id: '3',
         title: '달콤한 기억의 조각들',
         products: [
             { id: 9, name: '케이크아트', price: '45,000원', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300&h=200&fit=crop' },
@@ -30,7 +30,7 @@ export const mainData = [
         ]
     },
     {
-        id: 'ep. 4',
+        id: '4',
         title: '특별한 순간을 위한 디저트',
         products: [
             { id: 13, name: '프리미엄케이크', price: '52,000원', image: 'https://images.unsplash.com/photo-1586040140378-b5d3c6d7fb30?w=300&h=200&fit=crop' },

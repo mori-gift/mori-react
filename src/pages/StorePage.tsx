@@ -125,7 +125,7 @@ const StorePage = () => {
                     <div className="absolute bottom-12 left-6 text-white">
                         <p className="text-sm opacity-90 mb-1">{storeData.englishName}</p>
                         <h1 className="text-2xl font-bold mb-6">{storeData.displayName}</h1>
-                        <p className="text-sm opacity-90">{storeData.shortAddress} · {storeData.category}</p>
+                        <p className="text-sm opacity-90">{storeData.shortAddress} · {storeData.episode}</p>
                     </div>
 
                     {/* StoreHeader를 썸네일 내부로 이동 */}

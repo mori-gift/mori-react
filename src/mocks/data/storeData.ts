@@ -1,7 +1,7 @@
 export const storeData = [
     {
         id: 'store_1',
-        category: '케이크/디저트',
+        episode: '케이크/디저트',
         thumbnail: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
         displayName: '미소바케카케',
         englishName: 'misobakecake',
@@ -28,7 +28,7 @@ export const storeData = [
     },
     {
         id: 'store_2',
-        category: '케이크/디저트',
+        episode: '케이크/디저트',
         thumbnail: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=800&h=600&fit=crop',
         displayName: '우이펀드',
         englishName: 'wefund',
@@ -61,7 +61,7 @@ export const storeData = [
     },
     {
         id: 'store_3',
-        category: '케이크/디저트',
+        episode: '케이크/디저트',
         thumbnail: 'https://images.unsplash.com/photo-1560008581-09826d1de69e?w=800&h=600&fit=crop',
         displayName: '본바렌도',
         englishName: 'bonvarendo',
@@ -88,7 +88,7 @@ export const storeData = [
     },
     {
         id: 'store_4',
-        category: '베이커리/카페',
+        episode: '베이커리/카페',
         thumbnail: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&h=600&fit=crop',
         displayName: '달콤한하루',
         englishName: 'sweetday',
@@ -121,7 +121,7 @@ export const storeData = [
     },
     {
         id: 'store_5',
-        category: '케이크/디저트',
+        episode: '케이크/디저트',
         thumbnail: 'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=800&h=600&fit=crop',
         displayName: '스위트모먼트',
         englishName: 'sweetmoment',
@@ -148,7 +148,7 @@ export const storeData = [
     },
     {
         id: 'store_6',
-        category: '커스텀케이크/디저트',
+        episode: '커스텀케이크/디저트',
         thumbnail: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800&h=600&fit=crop',
         displayName: '케이크아트',
         englishName: 'cakeart',

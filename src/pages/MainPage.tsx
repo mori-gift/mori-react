@@ -5,6 +5,7 @@ import MainFooter from '../components/main/MainFooter';
 import ImageSlider from '../components/main/ImageSlider';
 import ProductSection from '../components/main/ProductSection';
 import MainHeader from '../components/main/MainHeader';
+import LoadingSpinner from "../components/common/LoadingSpinner";
 
 const MainPage = () => {
     const [sliderImages, setSliderImages] = useState<string[]>([]);
@@ -49,14 +50,7 @@ const MainPage = () => {
 
     // 로딩 상태
     if (loading) {
-        return (
-            <div className="min-h-screen bg-white flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
-                    <p className="mt-4 text-gray-600">데이터를 불러오는 중...</p>
-                </div>
-            </div>
-        );
+        return <LoadingSpinner />;
     }
 
     return (
@@ -69,7 +63,7 @@ const MainPage = () => {
 
             {/* 에피소드 섹션들 */}
             {sections.map((section, index) => (
-                <ProductSection key={section.id} section={section} index={index} />
+                <ProductSection section={section} index={index} />
             ))}
 
             {/* 푸터 */}

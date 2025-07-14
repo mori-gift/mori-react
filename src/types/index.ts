@@ -1,24 +1,22 @@
-// 카테고리 페이지용 스토어 타입
-export interface CategoryStore {
+export interface EpisodeStore {
     id: string;
     name: string;
     address: string;
-    category: string;
+    episode: string;
     images: string[];
 }
 
-// 카테고리 페이지용 데이터 타입
-export interface CategoryData {
+export interface EpisodeData {
     id: string;
     episodeNumber: string;
     title: string;
     description: string;
-    stores: CategoryStore[]; // CategoryStore 배열로 수정
+    stores: EpisodeStore[];
 }
 
 // StoreCard 컴포넌트 Props 타입
 export interface StoreCardProps {
-    store: CategoryStore;
+    store: EpisodeStore;
     storeIndex: number;
 }
 
@@ -32,7 +30,7 @@ export interface StoreLink {
 
 export interface StoreData {
     id: string;
-    category: string; // 업체 분야
+    episode: string; // 업체 분야
     thumbnail: string; // 썸네일 이미지
     displayName: string; // 한글 이름
     englishName: string; // 영어 이름

@@ -1,10 +1,10 @@
 import { http, HttpResponse } from 'msw';
 import { episodesData } from '../data/episodesData';
 
-export const categoriesHandlers = [
+export const episodesHandlers = [
     // 특정 카테고리 상세 정보
-    http.get('/api/categories/:categoryId', ({ params }) => {
-        const { categoryId } = params;
+    http.get('/api/episodes/:episodeId', ({ params }) => {
+        const { episodeId } = params;
 
         const episodeMap: Record<string, string> = {
             'ep1': 'ep1',
@@ -13,7 +13,7 @@ export const categoriesHandlers = [
             'ep4': 'ep4'
         };
 
-        const actualId = episodeMap[categoryId as string];
+        const actualId = episodeMap[episodeId as string];
         const episode = episodesData.find(ep => ep.id === actualId);
 
         if (!episode) {
@@ -31,7 +31,7 @@ export const categoriesHandlers = [
     }),
 
     // 카테고리 목록 (필요시)
-    http.get('/api/categories', () => {
+    http.get('/api/episodes', () => {
         return HttpResponse.json([
             { id: 'ep1', title: 'EP1. 너를 담은 케이크 한 조각', storeCount: 5 }
         ]);

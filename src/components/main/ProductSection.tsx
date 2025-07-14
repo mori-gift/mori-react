@@ -10,8 +10,7 @@ const ProductSection = ({ section, index }: ProductSectionProps) => {
     const isOdd = index % 2 === 0; // 0-based index이므로 첫 번째(ep.1)는 짝수 인덱스
 
     const handleMoreClick = () => {
-        const categoryId = section.id.toLowerCase().replace(/\s+/g, '-');
-        navigate(`/category/${categoryId}`);
+        navigate(`/episode/${"ep" + section.id}`);
     };
 
     return (
@@ -24,7 +23,7 @@ const ProductSection = ({ section, index }: ProductSectionProps) => {
                             ? 'bg-[#303030] text-white border-black'
                             : 'bg-[#E4E4E4] text-black border-black'
                     }`}>
-                        {section.id}
+                        {"ep. " + section.id}
                     </div>
                 </div>
 

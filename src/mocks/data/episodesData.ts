@@ -10,7 +10,7 @@ export const episodesData = [
                 id: 'store_1',
                 name: '미소바케가케',
                 address: '서울 마포구 홍대입구역 2번 출구',
-                category: '케이크/디저트',
+                episode: '케이크/디저트',
                 images: [
                     'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=300&h=300&fit=crop',
@@ -23,7 +23,7 @@ export const episodesData = [
                 id: 'store_2',
                 name: '우이펀드',
                 address: '서울 용산구 이태원역 1번 출구',
-                category: '케이크/디저트',
+                episode: '케이크/디저트',
                 images: [
                     'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=300&fit=crop',
@@ -36,7 +36,7 @@ export const episodesData = [
                 id: 'store_3',
                 name: '본바렌도',
                 address: '서울 용산구 한남동 블루스퀘어',
-                category: '케이크/디저트',
+                episode: '케이크/디저트',
                 images: [
                     'https://images.unsplash.com/photo-1560008581-09826d1de69e?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1557925923-cd4648e211e0?w=300&h=300&fit=crop',
@@ -49,7 +49,7 @@ export const episodesData = [
                 id: 'store_4',
                 name: '달콤한하루',
                 address: '서울 강남구 신사역 8번 출구',
-                category: '베이커리/카페',
+                episode: '베이커리/카페',
                 images: [
                     'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300&h=300&fit=crop',
@@ -62,7 +62,7 @@ export const episodesData = [
                 id: 'store_5',
                 name: '스위트모먼트',
                 address: '서울 서초구 강남역 12번 출구',
-                category: '케이크/디저트',
+                episode: '케이크/디저트',
                 images: [
                     'https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=300&h=300&fit=crop',
@@ -75,7 +75,7 @@ export const episodesData = [
                 id: 'store_6',
                 name: '케이크아트',
                 address: '서울 종로구 인사동길 12',
-                category: '커스텀케이크/디저트',
+                episode: '커스텀케이크/디저트',
                 images: [
                     'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&h=300&fit=crop',
                     'https://images.unsplash.com/photo-1560008581-09826d1de69e?w=300&h=300&fit=crop',

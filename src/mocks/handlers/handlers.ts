@@ -1,9 +1,9 @@
 import { mainPageHandlers } from './mainPageHandlers';
-import { categoriesHandlers } from './categoriesHandlers';
+import { episodesHandlers } from './episodesHandlers';
 import { storeHandlers } from "./storeHandler";
 
 export const handlers = [
     ...mainPageHandlers,
-    ...categoriesHandlers,
+    ...episodesHandlers,
     ...storeHandlers,
 ];
