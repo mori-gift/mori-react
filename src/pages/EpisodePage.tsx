@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
 import Header from '../components/common/Header';
 import StoreCard from '../components/episode/StoreCard';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import {EpisodeData} from "../types";
+import {EpisodeData} from "../types/episodeType";
 
 const EpisodePage = () => {
     const { episodeId } = useParams<{ episodeId: string }>();

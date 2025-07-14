@@ -1,26 +1,3 @@
-export interface EpisodeStore {
-    id: string;
-    name: string;
-    address: string;
-    episode: string;
-    images: string[];
-}
-
-export interface EpisodeData {
-    id: string;
-    episodeNumber: string;
-    title: string;
-    description: string;
-    stores: EpisodeStore[];
-}
-
-// StoreCard 컴포넌트 Props 타입
-export interface StoreCardProps {
-    store: EpisodeStore;
-    storeIndex: number;
-}
-
-// 업체 페이지용 타입들
 export interface StoreLink {
     id: string;
     platform: string; // 'instagram', 'website', 'kakao' etc.
