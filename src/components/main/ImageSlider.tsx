@@ -81,7 +81,7 @@ const ImageSlider = ({ images, onSlideChange }: ImageSliderProps) => {
                     <div
                         className="flex transition-transform duration-500 ease-out h-full"
                         style={{
-                            transform: `translateX(-${currentSlide * 100}%)`,
+                            transform: `translateX(-${currentSlide * 384}px)`,
                         }}
                     >
                         {images.map((image, index) => (
