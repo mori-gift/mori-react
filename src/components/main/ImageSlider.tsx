@@ -77,7 +77,7 @@ const ImageSlider = ({ images, onSlideChange }: ImageSliderProps) => {
 
             {/* 실제 이미지들 - 슬라이드 컨테이너 */}
             <div className="relative h-full flex items-center justify-center px-4 pt-16">
-                <div className="relative w-80 h-80 rounded-[45px] overflow-hidden shadow-2xl">
+                <div className="relative w-96 h-[450px] rounded-[45px] overflow-hidden shadow-2xl">
                     <div
                         className="flex transition-transform duration-500 ease-out h-full"
                         style={{
@@ -87,7 +87,7 @@ const ImageSlider = ({ images, onSlideChange }: ImageSliderProps) => {
                         {images.map((image, index) => (
                             <div
                                 key={index}
-                                className="w-80 h-80 flex-shrink-0"
+                                className="w-96 h-[450px] flex-shrink-0"
                             >
                                 <img
                                     src={image}
