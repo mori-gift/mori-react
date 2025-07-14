@@ -14,8 +14,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 className="w-full h-40 lg:h-48 object-cover"
             />
             <div className="p-3 lg:p-4">
-                <h3 className="font-semibold text-sm lg:text-lg mb-2">{product.name}</h3>
-                <p className="text-green-600 font-bold text-lg lg:text-xl">{product.price}</p>
+                <h3 className="font-medium text-sm lg:text-base mb-1">{product.name}</h3>
+                <p className="text-gray-600 text-xs lg:text-sm">서울 용산구 • 케이크/디저트</p>
             </div>
         </div>
     );

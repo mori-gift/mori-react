@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Section } from '../types';
-import Header from '../components/common/Header';
 import Footer from '../components/common/Footer';
 import ImageSlider from '../components/main/ImageSlider';
 import ProductSection from '../components/main/ProductSection';
+import MainHeader from '../components/main/MainHeader';
 
-const MainPage=() => {
+const MainPage = () => {
     const [sliderImages, setSliderImages] = useState<string[]>([]);
     const [sections, setSections] = useState<Section[]>([]);
     const [loading, setLoading] = useState(true);
@@ -55,18 +55,16 @@ const MainPage=() => {
 
     return (
         <div className="min-h-screen bg-white">
-            {/* 헤더 */}
-            <Header />
+            {/* 메인 전용 헤더 */}
+            <MainHeader sliderImages={sliderImages} />
 
             {/* 이미지 슬라이더 */}
             <ImageSlider images={sliderImages} />
 
-            {/* 메인 콘텐츠 */}
-            <main className="container mx-auto px-4 py-8 max-w-6xl">
-                {sections.map((section) => (
-                    <ProductSection key={section.id} section={section} />
-                ))}
-            </main>
+            {/* 에피소드 섹션들 */}
+            {sections.map((section, index) => (
+                <ProductSection key={section.id} section={section} index={index} />
+            ))}
 
             {/* 푸터 */}
             <Footer />
