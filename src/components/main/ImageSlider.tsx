@@ -54,25 +54,49 @@ const ImageSlider = ({ images, onSlideChange }: ImageSliderProps) => {
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
         >
-            {/* 블러된 배경 이미지 */}
+            {/* 블러된 배경 이미지들 - 슬라이드 컨테이너 */}
             <div
-                className="absolute inset-0 bg-cover bg-center transform scale-110 filter blur-md"
+                className="absolute inset-0 flex transition-transform duration-500 ease-out"
                 style={{
-                    backgroundImage: `url(${images[currentSlide]})`,
+                    transform: `translateX(-${currentSlide * 100}%)`,
                 }}
-            />
+            >
+                {images.map((image, index) => (
+                    <div
+                        key={index}
+                        className="w-full h-full flex-shrink-0 bg-cover bg-center transform scale-110 filter blur-md"
+                        style={{
+                            backgroundImage: `url(${image})`,
+                        }}
+                    />
+                ))}
+            </div>
 
             {/* 어두운 오버레이 */}
             <div className="absolute inset-0 bg-black/30" />
 
-            {/* 실제 이미지 */}
-            <div className="relative h-full flex items-center justify-center px-4">
-                <div className="w-80 h-80 rounded-[45px] overflow-hidden shadow-2xl mt-16">
-                    <img
-                        src={images[currentSlide]}
-                        alt={`슬라이드 ${currentSlide + 1}`}
-                        className="w-full h-full object-cover"
-                    />
+            {/* 실제 이미지들 - 슬라이드 컨테이너 */}
+            <div className="relative h-full flex items-center justify-center px-4 pt-16">
+                <div className="relative w-80 h-80 rounded-[45px] overflow-hidden shadow-2xl">
+                    <div
+                        className="flex transition-transform duration-500 ease-out h-full"
+                        style={{
+                            transform: `translateX(-${currentSlide * 100}%)`,
+                        }}
+                    >
+                        {images.map((image, index) => (
+                            <div
+                                key={index}
+                                className="w-80 h-80 flex-shrink-0"
+                            >
+                                <img
+                                    src={image}
+                                    alt={`슬라이드 ${index + 1}`}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
