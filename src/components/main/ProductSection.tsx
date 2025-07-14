@@ -20,36 +20,36 @@ const ProductSection = ({ section, index }: ProductSectionProps) => {
     };
 
     return (
-        <section className="min-h-screen flex flex-col justify-center py-16 px-4">
-            <div className="max-w-md mx-auto">
+        <section className="min-h-screen flex flex-col justify-center py-8">
+            <div className="max-w-[393px] mx-auto w-full">
                 {/* ep 원형 테두리 */}
-                <div className="flex justify-center mb-6">
-                    <div className={`px-6 py-2 rounded-full border-2 border-black font-semibold ${
+                <div className="flex justify-center mb-1">
+                    <div className={`px-2 py-0.5 rounded-full border-2 font-medium text-sm ${
                         isOdd
-                            ? 'bg-black text-white'
-                            : 'bg-[#E4E4E4] text-black'
+                            ? 'bg-[#303030] text-white border-black'
+                            : 'bg-[#E4E4E4] text-black border-black'
                     }`}>
                         {section.id}
                     </div>
                 </div>
 
                 {/* 제목 */}
-                <h2 className="text-lg font-medium text-center mb-8 text-gray-800">
+                <h2 className="text-lg font-medium text-center mb-4 text-gray-800">
                     {section.title}
                 </h2>
 
                 {/* 상품 그리드 */}
-                <div className="grid grid-cols-2 gap-4 mb-8">
+                <div className="grid grid-cols-2 gap-2 mb-6 px-2">
                     {section.products.map((product) => (
                         <ProductCard key={product.id} product={product} />
                     ))}
                 </div>
 
                 {/* 더보기 버튼 */}
-                <div className="text-center">
+                <div className="w-full px-3">
                     <button
                         onClick={handleMoreClick}
-                        className="px-12 py-3 bg-white text-black border-2 border-black rounded-full hover:bg-gray-100 transition-colors font-medium"
+                        className="w-full h-[43px] bg-white text-black border-[0.5px] border-[#3C3C3C] rounded-full hover:bg-gray-200 transition-colors font-medium"
                     >
                         더보기
                     </button>
