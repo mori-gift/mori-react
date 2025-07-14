@@ -1,7 +1,6 @@
-// mocks/data/episodesData.ts
-export const episodesData = [
+export const episodeData = [
     {
-        id: 'ep1',
+        id: '1',
         episodeNumber: 'EP1',
         title: '너를 담은 케이크 한 조각',
         description: '소중한 기억을 남기기 위한 작은 기념품처럼,\n너의 나의 이야기를, 이 케이크 한 조각에 담았어요.',
@@ -84,13 +83,6 @@ export const episodesData = [
                     'https://images.unsplash.com/photo-1586040140378-b5d3c6d7fb30?w=300&h=300&fit=crop'
                 ]
             }
-        ],
-        // 메인페이지에서만 사용 (ProductCard 컴포넌트용)
-        products: [
-            { id: 1, name: '장미 부케', price: '35,000원', image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=200&h=200&fit=crop' },
-            { id: 2, name: '튤립 화분', price: '25,000원', image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=200&h=200&fit=crop' },
-            { id: 3, name: '해바라기 세트', price: '18,000원', image: 'https://images.unsplash.com/photo-1578662015879-d7c8b997c9f9?w=200&h=200&fit=crop' },
-            { id: 4, name: '카네이션', price: '12,000원', image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?w=200&h=200&fit=crop' }
         ]
     }
 ];
