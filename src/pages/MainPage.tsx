@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Section } from '../types';
-import Footer from '../components/common/Footer';
+import MainFooter from '../components/main/MainFooter';
 import ImageSlider from '../components/main/ImageSlider';
 import ProductSection from '../components/main/ProductSection';
 import MainHeader from '../components/main/MainHeader';
@@ -73,7 +73,7 @@ const MainPage = () => {
             ))}
 
             {/* 푸터 */}
-            <Footer />
+            <MainFooter />
         </div>
     );
 }

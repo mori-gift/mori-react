@@ -24,7 +24,7 @@ const ProductSection = ({ section, index }: ProductSectionProps) => {
             <div className="max-w-[393px] mx-auto w-full">
                 {/* ep 원형 테두리 */}
                 <div className="flex justify-center mb-1">
-                    <div className={`px-2 py-0.5 rounded-full border-2 font-medium text-sm ${
+                    <div className={`px-2 py-0.5 rounded-full border font-medium text-sm ${
                         isOdd
                             ? 'bg-[#303030] text-white border-black'
                             : 'bg-[#E4E4E4] text-black border-black'
