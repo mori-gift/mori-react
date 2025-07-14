@@ -21,7 +21,7 @@ export const mainData = [
     },
     {
         id: '3',
-        title: '달콤한 기억의 조각들',
+        title: '따뜻한 겨울 디저트',
         products: [
             { id: 9, name: '케이크아트', price: '45,000원', image: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=300&h=200&fit=crop' },
             { id: 10, name: '베이커리하우스', price: '23,000원', image: 'https://images.unsplash.com/photo-1560008581-09826d1de69e?w=300&h=200&fit=crop' },
@@ -31,7 +31,7 @@ export const mainData = [
     },
     {
         id: '4',
-        title: '특별한 순간을 위한 디저트',
+        title: '봄날의 달콤한 만남',
         products: [
             { id: 13, name: '프리미엄케이크', price: '52,000원', image: 'https://images.unsplash.com/photo-1586040140378-b5d3c6d7fb30?w=300&h=200&fit=crop' },
             { id: 14, name: '아티산베이커리', price: '38,000원', image: 'https://images.unsplash.com/photo-1559157155-8ba2ee6ad62e?w=300&h=200&fit=crop' },

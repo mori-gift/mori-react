@@ -7,7 +7,7 @@ const StoreCard = ({ store, storeIndex }: StoreCardProps) => {
     const navigate = useNavigate();
 
     const handleStoreClick = () => {
-        navigate(`/store/${store.id}`);
+        navigate(`/store/store_${store.id}`);
     };
 
     return (
