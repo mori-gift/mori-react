@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EpisodeHeader from '../components/episode/EpisodeHeader';
@@ -7,7 +7,7 @@ import StoreList from '../components/episode/StoreList';
 import EmptyStores from '../components/episode/EmptyStores';
 import ErrorState from '../components/episode/ErrorState';
 import LoadingIndicator from '../components/episode/LoadingIndicator';
-import {EpisodeData} from "../types/episodeType";
+import { EpisodeData } from "../types/episodeType";
 import NavigationHeader from "../components/common/NavigationHeader";
 
 const EpisodePage = () => {
@@ -68,30 +68,38 @@ const EpisodePage = () => {
                 backgroundColor="rgba(255, 255, 255, 0.95)"
             />
 
-            <main className="container mx-auto px-4 py-8 max-w-6xl">
-                <EpisodeHeader
-                    episodeNumber={episodeData.episodeNumber}
-                    title={episodeData.title}
-                    description={episodeData.description}
-                />
+            {/* 제목 영역 - 흰색 배경 */}
+            <div className="bg-white">
+                <div className="container mx-auto px-4 pt-20 max-w-6xl">
+                    <EpisodeHeader
+                        episodeNumber={episodeData.id}
+                        title={episodeData.title}
+                        description={episodeData.description}
+                    />
+                </div>
+            </div>
 
-                {/* 상점이 없는 경우 */}
-                {episodeData.stores.length === 0 ? (
-                    <EmptyStores />
-                ) : (
-                    <>
-                        <StoreList
-                            stores={episodeData.stores}
-                            loadedStores={loadedStores}
-                        />
+            {/* 상점 리스트 영역 - 회색 배경 */}
+            <div style={{ backgroundColor: '#F5F5F5' }}>
+                <div className="container mx-auto px-4 py-8 max-w-6xl">
+                    {/* 상점이 없는 경우 */}
+                    {episodeData.stores.length === 0 ? (
+                        <EmptyStores />
+                    ) : (
+                        <>
+                            <StoreList
+                                stores={episodeData.stores}
+                                loadedStores={loadedStores}
+                            />
 
-                        {/* 더 불러올 상점이 있는 경우 로딩 인디케이터 */}
-                        {loadedStores < episodeData.stores.length && (
-                            <LoadingIndicator />
-                        )}
-                    </>
-                )}
-            </main>
+                            {/* 더 불러올 상점이 있는 경우 로딩 인디케이터 */}
+                            {loadedStores < episodeData.stores.length && (
+                                <LoadingIndicator />
+                            )}
+                        </>
+                    )}
+                </div>
+            </div>
         </div>
     );
 };

@@ -11,7 +11,7 @@ const StoreCard = ({ store, storeIndex }: StoreCardProps) => {
     };
 
     return (
-        <div key={storeIndex} className="bg-gray-50 rounded-2xl p-6">
+        <div key={storeIndex} className="bg-white rounded-2xl p-6">
             <div className="flex items-center justify-between mb-4">
                 <div>
                     <h2 className="text-lg md:text-xl font-bold text-gray-800">{store.name}</h2>
