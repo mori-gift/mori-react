@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
 import axios from 'axios';
-import Header from '../components/common/Header';
 import LoadingSpinner from '../components/common/LoadingSpinner';
 import EpisodeHeader from '../components/episode/EpisodeHeader';
 import StoreList from '../components/episode/StoreList';
 import EmptyStores from '../components/episode/EmptyStores';
 import ErrorState from '../components/episode/ErrorState';
 import LoadingIndicator from '../components/episode/LoadingIndicator';
-import { EpisodeData } from "../types/episodeType";
+import {EpisodeData} from "../types/episodeType";
+import NavigationHeader from "../components/common/NavigationHeader";
 
 const EpisodePage = () => {
     const { episodeId } = useParams<{ episodeId: string }>();
@@ -63,7 +63,10 @@ const EpisodePage = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            <Header />
+            <NavigationHeader
+                variant="dark"
+                backgroundColor="rgba(255, 255, 255, 0.95)"
+            />
 
             <main className="container mx-auto px-4 py-8 max-w-6xl">
                 <EpisodeHeader

@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { MapPin, Phone } from 'lucide-react';
+import React, {useEffect, useRef, useState} from 'react';
+import {useNavigate, useParams} from 'react-router-dom';
+import {MapPin, Phone} from 'lucide-react';
 import axios from 'axios';
-import StoreHeader from '../components/store/StoreHeader';
 import LoadingSpinner from '../components/common/LoadingSpinner';
-import { StoreData } from '../types';
+import {StoreData} from '../types';
+import NavigationHeader from "../components/common/NavigationHeader";
 
 const StorePage = () => {
     const { storeId } = useParams<{ storeId: string }>();
@@ -130,7 +130,10 @@ const StorePage = () => {
 
                     {/* StoreHeader를 썸네일 내부로 이동 */}
                     <div style={{ position: 'absolute', top: 0, left: 0, right: 0, zIndex: 5 }}>
-                        <StoreHeader />
+                        <NavigationHeader
+                            variant="light"
+                            backgroundColor="transparent"
+                        />
                     </div>
                 </div>
 
