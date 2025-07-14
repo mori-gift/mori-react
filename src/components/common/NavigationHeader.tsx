@@ -53,10 +53,16 @@ const NavigationHeader = ({
 
     return (
         <header
-            className="fixed top-0 left-0 right-0 z-50"
-            style={{ backgroundColor }}
+            className={`fixed top-0 left-0 right-0 z-50 ${
+                variant === 'dark' ? 'border-b' : ''
+            }`}
+            style={{
+                backgroundColor,
+                borderBottomColor: variant === 'dark' ? '#E1E1E1' : 'transparent',
+                borderBottomWidth: variant === 'dark' ? '1px' : '0'
+            }}
         >
-            <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-6xl">
+            <div className="container mx-auto px-4 py-2 flex justify-between items-center max-w-6xl">
                 <div className="flex items-center space-x-4">
                     <button
                         onClick={handleBack}
